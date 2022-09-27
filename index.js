@@ -10,7 +10,7 @@ const dateContainer = document.querySelector('.date-time');
 const formObj = document.querySelector('#form');
 
 const book = new Books();
-let totalBooks = retrieveFromLocalStorage('store') || [];
+let totalBooks = retrieveFromLocalStorage('store');
 
 if (totalBooks.length === 0) {
   container.innerHTML = '<p class="no-books">No books available!</p>';
@@ -29,6 +29,7 @@ formObj.addEventListener('submit', () => {
 const setRealTime = () => {
   dateContainer.innerHTML = displayTime();
 };
+setRealTime();
 setInterval(setRealTime, 1000);
 
 totalBooks.forEach((item) => {

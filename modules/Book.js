@@ -18,6 +18,5 @@ export default class Books {
     const book = new Books(titleObj.value, authorObj.value, id);
     totalBooks.push(book);
     localStorage.setItem('store', JSON.stringify(totalBooks));
-    container.innerHTML = '';
   }
 }
