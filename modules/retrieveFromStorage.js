@@ -1,5 +1,5 @@
 const retrieveFromLocalStorage = (key) => {
-  const fromStorage = JSON.parse(localStorage.getItem(key)) || null;
+  const fromStorage = JSON.parse(localStorage.getItem(key)) || [];
   return fromStorage;
 };
 
