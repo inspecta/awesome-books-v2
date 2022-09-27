@@ -1,32 +1,38 @@
 import displayBooks from './modules/displayBook.js';
 import deleteBook from './modules/deleteBook.js';
-import addNewBook from './modules/addBook.js';
-import retrieveFromLocalStorage from './modules/retrieveFromStorage.js';
 import displayTime from './modules/displayTime.js';
 import singePageNavigation from './modules/navigation.js';
 import Books from './modules/Book.js';
+import retrieveFromLocalStorage from './modules/retrieveFromStorage.js';
 
 const container = document.getElementById('books-list');
 const dateContainer = document.querySelector('.date-time');
+const formObj = document.querySelector('#form');
 
-const totalBooks = new Books();
-totalBooks.books = retrieveFromLocalStorage('store') || [];
+const book = new Books();
+let totalBooks = retrieveFromLocalStorage('store');
 
-if (totalBooks.books.length === 0) {
+if (totalBooks.length === 0) {
   container.innerHTML = '<p class="no-books">No books available!</p>';
 }
 
-// Add new book
-addNewBook();
+formObj.addEventListener('submit', () => {
+  book.addNewBook();
+  container.innerHTML = '';
+  totalBooks = JSON.parse(localStorage.getItem('store'));
+  totalBooks.forEach((item) => {
+    displayBooks(item);
+  });
+  formObj.reset();
+});
 
-// Set real time
 const setRealTime = () => {
   dateContainer.innerHTML = displayTime();
 };
 setInterval(setRealTime, 1000);
 
-totalBooks.books.forEach((book) => {
-  displayBooks(book);
+totalBooks.forEach((item) => {
+  displayBooks(item);
 });
 
 container.addEventListener('click', (e) => {
