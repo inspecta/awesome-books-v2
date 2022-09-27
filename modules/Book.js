@@ -1,6 +1,6 @@
 export default class Books {
   constructor() {
-    this.books = [];
+    this.books = undefined || [];
   }
 
   addBook = (title, author) => {
