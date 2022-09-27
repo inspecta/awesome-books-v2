@@ -1,10 +1,6 @@
-import Books from './Book.js';
-
-const book = new Books();
-
 const retrieveFromLocalStorage = (key) => {
-  book.books = JSON.parse(localStorage.getItem(key));
-  return book.books;
+  const fromStorage = JSON.parse(localStorage.getItem(key)) || null;
+  return fromStorage;
 };
 
 export default retrieveFromLocalStorage;
