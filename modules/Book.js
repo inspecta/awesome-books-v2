@@ -1,6 +1,6 @@
 export default class Books {
-  constructor() {
-    this.books = new Array();
+  constructor(books) {
+    this.books = books;
   }
 
   addBook(title, author) {
