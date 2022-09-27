@@ -2,7 +2,6 @@ import retrieveFromLocalStorage from './retrieveFromStorage.js';
 
 const titleObj = document.querySelector('#title');
 const authorObj = document.querySelector('#author');
-const container = document.getElementById('books-list');
 
 const totalBooks = retrieveFromLocalStorage('store') || [];
 
